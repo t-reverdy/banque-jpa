@@ -6,6 +6,8 @@ import java.time.LocalDate;
 
 @Entity
 @Table(name = "operation")
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+@DiscriminatorColumn(name = "TYPE")
 public class Operation implements Serializable {
 
     @Id
@@ -22,16 +24,17 @@ public class Operation implements Serializable {
     @Column(name = "MOTIF")
     private String motif;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "COMPTE_ID")
     private Compte compte;
 
     public Operation() {}
 
-    public Operation(LocalDate date, double montant, String motif) {
+    public Operation(LocalDate date, double montant, String motif, Compte compte) {
         this.date = date;
         this.montant = montant;
         this.motif = motif;
+        this.compte = compte;
     }
 
     public Integer getId() {

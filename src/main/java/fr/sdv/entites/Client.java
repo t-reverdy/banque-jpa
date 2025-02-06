@@ -25,14 +25,14 @@ public class Client implements Serializable {
     @Column(name = "DATE_NAISSANCE")
     private LocalDate dateNaissance;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "BANQUE_ID")
     private Banque banque;
 
     @Embedded
     private Adresse adresse;
 
-    @ManyToMany
+    @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(name = "client_compte",
         joinColumns = @JoinColumn(name = "CLIENT_ID", referencedColumnName = "ID"),
         inverseJoinColumns = @JoinColumn(name = "COMPTE_ID", referencedColumnName = "ID"))

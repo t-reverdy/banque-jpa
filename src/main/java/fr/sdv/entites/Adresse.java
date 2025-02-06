@@ -3,8 +3,10 @@ package fr.sdv.entites;
 import jakarta.persistence.Column;
 import jakarta.persistence.Embeddable;
 
+import java.io.Serializable;
+
 @Embeddable
-public class Adresse{
+public class Adresse implements Serializable {
 
     @Column(name = "NUMERO")
     private int numero;

@@ -8,6 +8,7 @@ import java.util.Set;
 
 @Entity
 @Table(name = "compte")
+@Inheritance(strategy = InheritanceType.JOINED)
 public class Compte implements Serializable {
 
     @Id
@@ -21,13 +22,13 @@ public class Compte implements Serializable {
     @Column(name = "SOLDE")
     private Double solde;
 
-    @ManyToMany(mappedBy = "comptes")
+    @ManyToMany(mappedBy = "comptes", cascade = CascadeType.ALL)
     private Set<Client> clients;
     {
         clients = new HashSet<Client>();
     }
 
-    @OneToMany(mappedBy = "compte")
+    @OneToMany(mappedBy = "compte", cascade = CascadeType.ALL)
     private Set<Operation> operations;
     {
         operations = new HashSet<Operation>();
