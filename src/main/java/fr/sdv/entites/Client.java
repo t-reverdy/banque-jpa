@@ -44,10 +44,11 @@ public class Client implements Serializable {
 
     public Client() {}
 
-    public Client(String nom, String prenom, LocalDate dateNaissance) {
+    public Client(String nom, String prenom, LocalDate dateNaissance, Banque banque) {
         this.nom = nom;
         this.prenom = prenom;
         this.dateNaissance = dateNaissance;
+        this.banque = banque;
     }
 
     public Integer getId() {

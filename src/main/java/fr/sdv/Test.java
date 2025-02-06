@@ -18,7 +18,8 @@ public class Test {
         Banque banque = new Banque("banque");
         em.persist(banque);
 
-        Client client = new Client("Smith", "John", LocalDate.of(10,10,10));
+        Client client = new Client("Smith", "John", LocalDate.of(10,10,10),banque);
+        banque.getClients().add(client);
         em.persist(client);
 
 
